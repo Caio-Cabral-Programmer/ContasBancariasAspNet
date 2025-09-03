@@ -21,7 +21,7 @@ builder.Host.UseSerilog();
 
 // Add services to the container
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(DatabaseConfigHelper.GetConnectionString(builder.Configuration)));
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
